@@ -6,10 +6,10 @@ export async function up(knex: Knex) {
     table.string('skill').notNullable();
     table.string('level').notNullable();
 
-    table.integer('user_id')
+    table.integer('service_id')
       .notNullable()
       .references('id')
-      .inTable('users')
+      .inTable('services')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
   })

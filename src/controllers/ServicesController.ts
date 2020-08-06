@@ -34,15 +34,17 @@ export default class ServicesController {
     
       const user_id = insertedUsersId[0];
     
-      await trx('services').insert({
+      const insertedServiceId = await trx('services').insert({
         service,
         cost,
         user_id
       })
+
+      const service_id = insertedServiceId[0];
     
       const newSkills = skills.map((skill: SkillItem) => ({
         ...skill,
-        user_id
+        service_id
       }));
     
       await trx('skills').insert(newSkills);
