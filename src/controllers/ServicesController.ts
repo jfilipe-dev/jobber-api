@@ -10,8 +10,17 @@ interface SkillItem {
 
 export default class ServicesController {
   async create(request: Request, response: Response) {
-    const { name, avatar, whatsapp, bio, portifolio, service, cost, skills } =
-      request.body;
+    const {
+      name,
+      avatar,
+      whatsapp,
+      password,
+      bio,
+      portifolio,
+      service,
+      cost,
+      skills,
+    } = request.body;
 
     const trx = await db.transaction();
 
@@ -27,6 +36,7 @@ export default class ServicesController {
         name,
         avatar,
         whatsapp,
+        password,
         bio,
         portifolio,
       });
