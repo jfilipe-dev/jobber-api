@@ -51,10 +51,12 @@ export default class ServicesController {
 
       const service_id = insertedServiceId[0];
 
-      const newSkills = skills.map((skill: SkillItem) => ({
-        ...skill,
-        service_id,
-      }));
+      const newSkills = skills
+        .filter((s: string) => s)
+        .map((skill: SkillItem) => ({
+          ...skill,
+          service_id,
+        }));
 
       await trx('skills').insert(newSkills);
 
