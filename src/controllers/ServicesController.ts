@@ -52,7 +52,7 @@ export default class ServicesController {
       const service_id = insertedServiceId[0];
 
       const newSkills = skills
-        .filter((s: string) => s)
+        .filter((s: SkillItem) => s.skill && s.level)
         .map((skill: SkillItem) => ({
           ...skill,
           service_id,
